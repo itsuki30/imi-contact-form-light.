@@ -770,7 +770,8 @@ function render_form_element($atts)
             }
             return $optionsHtml;
         case 'hidden':
-            return '<input type="hidden" name="' . esc_attr($atts['name']) . '" id="' . esc_attr($atts['id']) . '" value="' . esc_attr($atts['valuetext']) . '">';
+            $valuetext = apply_filters('imi_contact_form_hidden_valuetext', $atts['valuetext'], $atts['name']);
+            return '<input type="hidden" name="' . esc_attr($atts['name']) . '" id="' . esc_attr($atts['id']) . '" value="' . esc_attr($valuetext) . '">';
         case 'file':
             return '<input type="file" name="imi_contact_light_file" id="' . esc_attr($atts['id']) . '"' . $class_attr . $required . '>';
         case 'submit':
